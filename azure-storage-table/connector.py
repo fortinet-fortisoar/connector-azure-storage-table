@@ -10,8 +10,6 @@ from connectors.core.utils import update_connnector_config
 
 logger = get_logger('azure-storage-table')
 
-CONFIG_SUPPORTS_TOKEN = True
-
 
 class MicrosoftSentinel(Connector):
     def execute(self, config, operation, params, **kwargs):
