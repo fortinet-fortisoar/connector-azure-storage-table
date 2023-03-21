@@ -1,0 +1,337 @@
+{
+  "name": "azure-storage-table",
+  "label": "Azure Storage Table",
+  "version": "1.0.0",
+  "description": "Azure Table storage is a service that stores non-relational structured data (also known as structured NoSQL data) in the cloud, providing a key/attribute store with a schemaless design. these connector helps you to create, update, delete, query on azure storage table",
+  "publisher": "Fortinet",
+  "cs_approved": true,
+  "cs_compatible": true,
+  "category": "IT Services",
+  "icon_small_name": "small.png",
+  "icon_large_name": "large.png",
+  "help_online": "",
+  "ingestion_supported": true,
+  "configuration": {
+    "fields": [
+      {
+        "title": "Storage Account Name",
+        "description": "Name of the storage account from which you want to perform the automated operations.",
+        "required": true,
+        "editable": true,
+        "visible": true,
+        "type": "text",
+        "name": "accountName"
+      },
+      {
+        "title": "Account SAS Token",
+        "name": "sas_token",
+        "type": "password",
+        "description": "Account Shared Access Signature to perform automated operations on Storage Table Service.",
+        "tooltip": "Account Shared Access Signature to perform automated operations on Storage Table Service.",
+        "required": true,
+        "editable": true,
+        "visible": true
+      },
+      {
+        "title": "Verify SSL",
+        "required": false,
+        "editable": true,
+        "visible": true,
+        "type": "checkbox",
+        "name": "verify_ssl",
+        "value": true,
+        "description": "Specifies whether the SSL certificate for the server is to be verified or not. By default, this option is set as True."
+      }
+    ]
+  },
+  "operations": [
+    {
+      "title": "Create Table",
+      "description": "The Create Table operation creates a new table in a storage account.",
+      "operation": "create_table",
+      "category": "investigation",
+      "annotation": "create_table",
+      "parameters": [
+        {
+          "title": "Table Name",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "table_name",
+          "description": "Table name to create new table."
+        }
+      ],
+      "output_schema": {
+        "odata.metadata": "",
+        "TableName": ""
+      }
+    },
+    {
+      "title": "Delete Table",
+      "description": "The Delete Table operation deletes a table in a storage account.",
+      "operation": "delete_table",
+      "category": "investigation",
+      "annotation": "delete_table",
+      "parameters": [
+        {
+          "title": "Table Name",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "table_name",
+          "description": "Table name to delete table."
+        }
+      ],
+      "output_schema": {},
+      "enabled": true
+    },
+    {
+      "title": "Query Table",
+      "description": "The Query Tables operation returns a list of tables under the specified account.",
+      "operation": "query_table",
+      "category": "investigation",
+      "annotation": "query_table",
+      "parameters": [
+        {
+          "title": "Query Filter",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "query_filter",
+          "description": "Query expression."
+        },
+        {
+          "title": "Records Limit",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "records_limit",
+          "description": "Retrieve top n tables."
+        }
+      ],
+      "output_schema": {
+        "value": [
+          {
+            "TableName": ""
+          }
+        ]
+      },
+      "enabled": true
+    },
+    {
+      "title": "Insert Entity into Table",
+      "description": "The Insert Entity operation inserts a new entity into a table.",
+      "operation": "insert_entity_table",
+      "category": "investigation",
+      "annotation": "insert_entity_table",
+      "parameters": [
+        {
+          "title": "Table Name",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "table_name",
+          "description": "Table name to insert entity into the table."
+        },
+        {
+          "title": "Partition Key",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "partition_key",
+          "description": "Unique identifier for the partition within a given table."
+        },
+        {
+          "title": "Row Key",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "row_key",
+          "description": "Unique identifier for an entity within a given partition."
+        },
+        {
+          "title": "Entity Fields ",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "json",
+          "name": "entity_fields",
+          "description": "Entity fields in JSON format: { \"Key1\": Value1, \"Key2\": Value2}."
+        }
+      ],
+      "output_schema": {
+        "PartitionKey": "",
+        "RowKey": "",
+        "Timestamp": "",
+        "NumOfOrders": ""
+      }
+    },
+    {
+      "title": "Query Entity into Table",
+      "description": "The Query Entities operation queries entities in a table.",
+      "operation": "query_entity_table",
+      "category": "investigation",
+      "annotation": "query_entity_table",
+      "parameters": [
+        {
+          "title": "Table Name",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "table_name",
+          "description": "Table name to query on entity."
+        },
+        {
+          "title": "Partition Key",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "partition_key",
+          "description": "Unique identifier for the partition within a given table."
+        },
+        {
+          "title": "Row Key",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "row_key",
+          "description": "Unique identifier for an entity within a given partition."
+        },
+        {
+          "title": "Query Filter",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "query_filter",
+          "description": "Filter Entities query expression.\nInformation about Query expression structure can be found here: https://docs.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#constructing-filter-strings."
+        },
+        {
+          "title": "Property Names",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "property_names",
+          "description": "Provide comma separated property names"
+        }
+      ],
+      "output_schema": {
+        "value": [
+          {
+            "PartitionKey": "",
+            "RowKey": "",
+            "Timestamp": ""
+          },
+          {
+            "PartitionKey": "",
+            "RowKey": "",
+            "Timestamp": ""
+          },
+          {
+            "PartitionKey": "",
+            "RowKey": "",
+            "Timestamp": ""
+          }
+        ]
+      },
+      "enabled": true
+    },
+    {
+      "title": "Update Entity into Table",
+      "description": "Update an existing entity in a table. The Update Entity command does not replace the existing entity.",
+      "operation": "update_entity_table",
+      "category": "investigation",
+      "annotation": "update_entity_table",
+      "parameters": [
+        {
+          "title": "Table Name",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "table_name",
+          "description": "Table name to update on entity."
+        },
+        {
+          "title": "Partition Key",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "partition_key",
+          "description": "Unique identifier for the partition within a given table."
+        },
+        {
+          "title": "Row Key",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "row_key",
+          "description": "Unique identifier for an entity within a given partition."
+        },
+        {
+          "title": "Entity Fields ",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "json",
+          "name": "entity_fields",
+          "description": "Entity fields in JSON format: { \"Key1\": Value1, \"Key2\": Value2}."
+        }
+      ],
+      "output_schema": {},
+      "enabled": true
+    },
+    {
+      "title": "Delete Entity into Table",
+      "description": "Delete an existing entity from a table.",
+      "operation": "delete_entity_table",
+      "category": "investigation",
+      "annotation": "delete_entity_table",
+      "parameters": [
+        {
+          "title": "Table Name",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "table_name",
+          "description": "Table name to delete a entity."
+        },
+        {
+          "title": "Partition Key",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "partition_key",
+          "description": "Unique identifier for the partition within a given table."
+        },
+        {
+          "title": "Row Key",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "row_key",
+          "description": "Unique identifier for an entity within a given partition."
+        }
+      ],
+      "output_schema": {},
+      "enabled": true
+    }
+  ]
+}
+
