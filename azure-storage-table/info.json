@@ -68,63 +68,6 @@
       }
     },
     {
-      "title": "Delete Table",
-      "description": "The Delete Table operation deletes a table in a storage account.",
-      "operation": "delete_table",
-      "category": "investigation",
-      "annotation": "delete_table",
-      "parameters": [
-        {
-          "title": "Table Name",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "table_name",
-          "description": "Table name to delete table."
-        }
-      ],
-      "output_schema": {
-        "result" : ""
-      },
-      "enabled": true
-    },
-    {
-      "title": "Query Table",
-      "description": "The Query Tables operation returns a list of tables under the specified account.",
-      "operation": "query_table",
-      "category": "investigation",
-      "annotation": "query_table",
-      "parameters": [
-        {
-          "title": "Query Filter",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "query_filter",
-          "description": "Specify the filter query based on which you want to retrieve tables from Azure Storage Table."
-        },
-        {
-          "title": "Records Limit",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "records_limit",
-          "description": "Specify the maximum number of tables that this operation should return from Azure Storage Table."
-        }
-      ],
-      "output_schema": {
-        "value": [
-          {
-            "TableName": ""
-          }
-        ]
-      },
-      "enabled": true
-    },
-    {
       "title": "Insert Entity Into Table",
       "description": "The Insert Entity operation inserts a new entity into a table.",
       "operation": "insert_entity_table",
@@ -174,6 +117,41 @@
         "Timestamp": "",
         "NumOfOrders": ""
       }
+    },
+    {
+      "title": "Query Table",
+      "description": "The Query Tables operation returns a list of tables under the specified account.",
+      "operation": "query_table",
+      "category": "investigation",
+      "annotation": "query_table",
+      "parameters": [
+        {
+          "title": "Query Filter",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "query_filter",
+          "description": "Specify the filter query based on which you want to retrieve tables from Azure Storage Table."
+        },
+        {
+          "title": "Records Limit",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "records_limit",
+          "description": "Specify the maximum number of tables that this operation should return from Azure Storage Table."
+        }
+      ],
+      "output_schema": {
+        "value": [
+          {
+            "TableName": ""
+          }
+        ]
+      },
+      "enabled": true
     },
     {
       "title": "Query Entity Into Table",
@@ -335,6 +313,28 @@
       ],
       "output_schema": {
          "result" : ""
+      },
+      "enabled": true
+    },
+    {
+      "title": "Delete Table",
+      "description": "The Delete Table operation deletes a table in a storage account.",
+      "operation": "delete_table",
+      "category": "investigation",
+      "annotation": "delete_table",
+      "parameters": [
+        {
+          "title": "Table Name",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "table_name",
+          "description": "Table name to delete table."
+        }
+      ],
+      "output_schema": {
+        "result" : ""
       },
       "enabled": true
     }
