@@ -62,7 +62,7 @@ def delete_table(config, params, connector_info):
         "table_name") + '\')' + config.get("sas_token")
 
     response = api_request("DELETE", endpoint, connector_info, config)
-    return response
+    return {'result': 'Table name {0} successfully deleted'.format(params.get("table_name"))}
 
 
 def query_table(config, params, connector_info):
@@ -98,7 +98,7 @@ def update_entity_table(config, params, connector_info):
 
     endpoint += query_string + config.get("sas_token")
     response = api_request("PUT", endpoint, connector_info, config, Json=params.get("entity_fields"))
-    return response
+    return {'result': 'Entity table {0} successfully updated'.format(query_string)}
 
 
 def query_entity_table(config, params, connector_info):
@@ -141,7 +141,7 @@ def delete_entity_table(config, params, connector_info):
         "If-Match": "*"
     }
     response = api_request("DELETE", endpoint, connector_info, config, headers=headers)
-    return response
+    return {'result': 'Entity table {0} successfully deleted'.format(query_string)}
 
 
 operations = {

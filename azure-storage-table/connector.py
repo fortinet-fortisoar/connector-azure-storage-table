@@ -11,7 +11,7 @@ from connectors.core.utils import update_connnector_config
 logger = get_logger('azure-storage-table')
 
 
-class MicrosoftSentinel(Connector):
+class AzureStorageTable(Connector):
     def execute(self, config, operation, params, **kwargs):
         try:
             connector_info = {"connector_name": self._info_json.get('name'),

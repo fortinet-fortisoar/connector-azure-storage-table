@@ -10,7 +10,7 @@
   "icon_small_name": "small.png",
   "icon_large_name": "large.png",
   "help_online": "",
-  "ingestion_supported": true,
+  "ingestion_supported": false,
   "configuration": {
     "fields": [
       {
@@ -84,7 +84,9 @@
           "description": "Table name to delete table."
         }
       ],
-      "output_schema": {},
+      "output_schema": {
+        "result" : ""
+      },
       "enabled": true
     },
     {
@@ -101,7 +103,7 @@
           "visible": true,
           "type": "text",
           "name": "query_filter",
-          "description": "Query expression."
+          "description": "Specify the filter query based on which you want to retrieve tables from Azure Storage Table."
         },
         {
           "title": "Records Limit",
@@ -110,7 +112,7 @@
           "visible": true,
           "type": "text",
           "name": "records_limit",
-          "description": "Retrieve top n tables."
+          "description": "Specify the maximum number of tables that this operation should return from Azure Storage Table."
         }
       ],
       "output_schema": {
@@ -123,7 +125,7 @@
       "enabled": true
     },
     {
-      "title": "Insert Entity into Table",
+      "title": "Insert Entity Into Table",
       "description": "The Insert Entity operation inserts a new entity into a table.",
       "operation": "insert_entity_table",
       "category": "investigation",
@@ -174,7 +176,7 @@
       }
     },
     {
-      "title": "Query Entity into Table",
+      "title": "Query Entity Into Table",
       "description": "The Query Entities operation queries entities in a table.",
       "operation": "query_entity_table",
       "category": "investigation",
@@ -214,7 +216,7 @@
           "visible": true,
           "type": "text",
           "name": "query_filter",
-          "description": "Filter Entities query expression.\nInformation about Query expression structure can be found here: https://docs.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#constructing-filter-strings."
+          "description": "Specify the filter query based on which you want to retrieve entities from Azure Storage Table.\nInformation about Query expression structure can be found here: https://docs.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#constructing-filter-strings."
         },
         {
           "title": "Property Names",
@@ -248,7 +250,7 @@
       "enabled": true
     },
     {
-      "title": "Update Entity into Table",
+      "title": "Update Entity Into Table",
       "description": "Update an existing entity in a table. The Update Entity command does not replace the existing entity.",
       "operation": "update_entity_table",
       "category": "investigation",
@@ -291,11 +293,13 @@
           "description": "Entity fields in JSON format: { \"Key1\": Value1, \"Key2\": Value2}."
         }
       ],
-      "output_schema": {},
+      "output_schema": {
+         "result" : ""
+      },
       "enabled": true
     },
     {
-      "title": "Delete Entity into Table",
+      "title": "Delete Entity Into Table",
       "description": "Delete an existing entity from a table.",
       "operation": "delete_entity_table",
       "category": "investigation",
@@ -329,7 +333,9 @@
           "description": "Unique identifier for an entity within a given partition."
         }
       ],
-      "output_schema": {},
+      "output_schema": {
+         "result" : ""
+      },
       "enabled": true
     }
   ]
