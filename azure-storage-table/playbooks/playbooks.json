@@ -1,0 +1,558 @@
+{
+  "type": "workflow_collections",
+  "data": [
+    {
+      "uuid": "d38f8942-953e-4fa9-9f1d-4e04f772ad6b",
+      "@type": "WorkflowCollection",
+      "workflows": [
+        {
+          "@type": "Workflow",
+          "uuid": "cae9753b-34e9-4ce2-9bcc-f52ffac9aabb",
+          "collection": "/api/3/workflow_collections/d38f8942-953e-4fa9-9f1d-4e04f772ad6b",
+          "steps": [
+            {
+              "uuid": "d3ebc2ae-df82-4628-b08b-767521131c5b",
+              "@type": "WorkflowStep",
+              "name": "Alerts",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "1a827dd8-ce49-411d-9b6e-e334ecec1786",
+                "title": "Azure Storage Table: Create Table",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "2f108cb7-97f9-4212-9ec3-303649c1aa08",
+              "@type": "WorkflowStep",
+              "name": "Create Table",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Azure Storage Table",
+                "config": "''",
+                "params": {
+                  "table_name": ""
+                },
+                "version": "1.0.0",
+                "connector": "azure-storage-table",
+                "operation": "create_table",
+                "operationTitle": "Create Table",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "The Create Table operation creates a new table in a storage account.",
+          "name": "Create Table",
+          "tag": "#Azure Storage Table",
+          "isActive": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/d3ebc2ae-df82-4628-b08b-767521131c5b",
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "fa3b216b-5b76-4ba6-9ee9-bbe6b2519477",
+              "label": null,
+              "isExecuted": false,
+              "name": "Alerts -> Create Table",
+              "sourceStep": "/api/3/workflow_steps/d3ebc2ae-df82-4628-b08b-767521131c5b",
+              "targetStep": "/api/3/workflow_steps/2f108cb7-97f9-4212-9ec3-303649c1aa08"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "dd9e9857-d8ac-4b34-b974-d597f4dd20d7",
+          "collection": "/api/3/workflow_collections/d38f8942-953e-4fa9-9f1d-4e04f772ad6b",
+          "steps": [
+            {
+              "uuid": "6ea4067f-1d98-4549-8249-273d7e333882",
+              "@type": "WorkflowStep",
+              "name": "Alerts",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "dcbb73c4-e5d3-49e6-9b5f-07347b701802",
+                "title": "Azure Storage Table: Delete Table",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "283c99c6-3f23-4714-9cde-cbe90603596b",
+              "@type": "WorkflowStep",
+              "name": "Delete Table",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Azure Storage Table",
+                "config": "''",
+                "params": {
+                  "table_name": ""
+                },
+                "version": "1.0.0",
+                "connector": "azure-storage-table",
+                "operation": "delete_table",
+                "operationTitle": "Delete Table",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "The Delete Table operation deletes a table in a storage account.",
+          "name": "Delete Table",
+          "tag": "#Azure Storage Table",
+          "isActive": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/6ea4067f-1d98-4549-8249-273d7e333882",
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "0239776d-dfd3-4cdc-802f-492cc2d53adb",
+              "label": null,
+              "isExecuted": false,
+              "name": "Alerts -> Delete Table",
+              "sourceStep": "/api/3/workflow_steps/6ea4067f-1d98-4549-8249-273d7e333882",
+              "targetStep": "/api/3/workflow_steps/283c99c6-3f23-4714-9cde-cbe90603596b"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "94c99aff-7707-4403-9907-74278eb53c52",
+          "collection": "/api/3/workflow_collections/d38f8942-953e-4fa9-9f1d-4e04f772ad6b",
+          "steps": [
+            {
+              "uuid": "59896bc9-8379-4015-848e-4d810f764e20",
+              "@type": "WorkflowStep",
+              "name": "Alerts",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "51159e4f-27c6-4184-806b-15d2e553efa4",
+                "title": "Azure Storage Table: Query Table",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "d176ff01-db78-437a-ba7c-0783e81c63c5",
+              "@type": "WorkflowStep",
+              "name": "Query Table",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Azure Storage Table",
+                "config": "''",
+                "params": {
+                  "query_filter": "",
+                  "records_limit": ""
+                },
+                "version": "1.0.0",
+                "connector": "azure-storage-table",
+                "operation": "query_table",
+                "operationTitle": "Query Table",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "The Query Tables operation returns a list of tables under the specified account.",
+          "name": "Query Table",
+          "tag": "#Azure Storage Table",
+          "isActive": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/59896bc9-8379-4015-848e-4d810f764e20",
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "c551a358-9bfe-4dee-b88a-9b0122cad445",
+              "label": null,
+              "isExecuted": false,
+              "name": "Alerts -> Query Table",
+              "sourceStep": "/api/3/workflow_steps/59896bc9-8379-4015-848e-4d810f764e20",
+              "targetStep": "/api/3/workflow_steps/d176ff01-db78-437a-ba7c-0783e81c63c5"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "dfb532ed-cf0b-4cfe-9d3e-746c0fb3bf42",
+          "collection": "/api/3/workflow_collections/d38f8942-953e-4fa9-9f1d-4e04f772ad6b",
+          "steps": [
+            {
+              "uuid": "3cde031e-a95c-4146-8c33-8dad4fdf3de4",
+              "@type": "WorkflowStep",
+              "name": "Alerts",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "8c423cb8-de49-4e1b-9eee-0e55975b4d22",
+                "title": "Azure Storage Table: Insert Entity into Table",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "e2d0263b-3622-4dda-8c5f-b25d5396f54b",
+              "@type": "WorkflowStep",
+              "name": "Insert Entity into Table",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Azure Storage Table",
+                "config": "''",
+                "params": {
+                  "table_name": "",
+                  "entity_fields": ""
+                },
+                "version": "1.0.0",
+                "connector": "azure-storage-table",
+                "operation": "insert_entity_table",
+                "operationTitle": "Insert Entity into Table",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "The Insert Entity operation inserts a new entity into a table.",
+          "name": "Insert Entity into Table",
+          "tag": "#Azure Storage Table",
+          "isActive": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/3cde031e-a95c-4146-8c33-8dad4fdf3de4",
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "1afa6382-687b-4dd1-9480-a21e0e386594",
+              "label": null,
+              "isExecuted": false,
+              "name": "Alerts -> Insert Entity into Table",
+              "sourceStep": "/api/3/workflow_steps/3cde031e-a95c-4146-8c33-8dad4fdf3de4",
+              "targetStep": "/api/3/workflow_steps/e2d0263b-3622-4dda-8c5f-b25d5396f54b"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "2780af92-81e7-476a-a61d-d7a2d4cbcb5e",
+          "collection": "/api/3/workflow_collections/d38f8942-953e-4fa9-9f1d-4e04f772ad6b",
+          "steps": [
+            {
+              "uuid": "566ea8c3-0f67-43ec-afde-f4e31a7e4732",
+              "@type": "WorkflowStep",
+              "name": "Alerts",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "fb81a345-d57c-4ecd-b8ad-c4aa5f6676c7",
+                "title": "Azure Storage Table: Query Entity into Table",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "ef2c94c8-f2ad-4bd0-a440-9347ee3b0c24",
+              "@type": "WorkflowStep",
+              "name": "Query Entity into Table",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Azure Storage Table",
+                "config": "''",
+                "params": {
+                  "table_name": "",
+                  "partition_key": "",
+                  "row_key": "",
+                  "query_filter": "",
+                  "property_names": ""
+                },
+                "version": "1.0.0",
+                "connector": "azure-storage-table",
+                "operation": "query_entity_table",
+                "operationTitle": "Query Entity into Table",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "The Query Entities operation queries entities in a table.",
+          "name": "Query Entity into Table",
+          "tag": "#Azure Storage Table",
+          "isActive": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/566ea8c3-0f67-43ec-afde-f4e31a7e4732",
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "588105a4-bf60-45a5-af91-828c47516758",
+              "label": null,
+              "isExecuted": false,
+              "name": "Alerts -> Query Entity into Table",
+              "sourceStep": "/api/3/workflow_steps/566ea8c3-0f67-43ec-afde-f4e31a7e4732",
+              "targetStep": "/api/3/workflow_steps/ef2c94c8-f2ad-4bd0-a440-9347ee3b0c24"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "93b1b8c4-a441-4eb1-be68-11c82fb41e5a",
+          "collection": "/api/3/workflow_collections/d38f8942-953e-4fa9-9f1d-4e04f772ad6b",
+          "steps": [
+            {
+              "uuid": "ff813453-2fa6-4d2c-a098-95b88f27673b",
+              "@type": "WorkflowStep",
+              "name": "Alerts",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "11999890-26f9-4752-b7b2-36e3dd753cfd",
+                "title": "Azure Storage Table: Update Entity into Table",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "830d0c68-7d33-452e-bcb3-dad841b88e2d",
+              "@type": "WorkflowStep",
+              "name": "Update Entity into Table",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Azure Storage Table",
+                "config": "''",
+                "params": {
+                  "table_name": "",
+                  "partition_key": "",
+                  "row_key": "",
+                  "entity_fields": ""
+                },
+                "version": "1.0.0",
+                "connector": "azure-storage-table",
+                "operation": "update_entity_table",
+                "operationTitle": "Update Entity into Table",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Update an existing entity in a table. The Update Entity command does not replace the existing entity.",
+          "name": "Update Entity into Table",
+          "tag": "#Azure Storage Table",
+          "isActive": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/ff813453-2fa6-4d2c-a098-95b88f27673b",
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "fc33296c-7b79-43f2-877f-bba38f05e71a",
+              "label": null,
+              "isExecuted": false,
+              "name": "Alerts -> Update Entity into Table",
+              "sourceStep": "/api/3/workflow_steps/ff813453-2fa6-4d2c-a098-95b88f27673b",
+              "targetStep": "/api/3/workflow_steps/830d0c68-7d33-452e-bcb3-dad841b88e2d"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "c9e376ab-a3a7-4c9b-a4ae-7f806d8a6c21",
+          "collection": "/api/3/workflow_collections/d38f8942-953e-4fa9-9f1d-4e04f772ad6b",
+          "steps": [
+            {
+              "uuid": "bd2f6029-4f58-481d-927a-45698f211d53",
+              "@type": "WorkflowStep",
+              "name": "Alerts",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "fb3dc8c6-71d6-47f7-907d-f31e574da07d",
+                "title": "Azure Storage Table: Delete Entity into Table",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "8ecc3f81-cda9-4256-a430-e49590e810c3",
+              "@type": "WorkflowStep",
+              "name": "Delete Entity into Table",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Azure Storage Table",
+                "config": "''",
+                "params": {
+                  "table_name": "",
+                  "partition_key": "",
+                  "row_key": ""
+                },
+                "version": "1.0.0",
+                "connector": "azure-storage-table",
+                "operation": "delete_entity_table",
+                "operationTitle": "Delete Entity into Table",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Delete an existing entity from a table.",
+          "name": "Delete Entity into Table",
+          "tag": "#Azure Storage Table",
+          "isActive": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/bd2f6029-4f58-481d-927a-45698f211d53",
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "ed93a841-d469-4f06-a3e9-8ffe9d060969",
+              "label": null,
+              "isExecuted": false,
+              "name": "Alerts -> Delete Entity into Table",
+              "sourceStep": "/api/3/workflow_steps/bd2f6029-4f58-481d-927a-45698f211d53",
+              "targetStep": "/api/3/workflow_steps/8ecc3f81-cda9-4256-a430-e49590e810c3"
+            }
+          ]
+        }
+      ],
+      "name": "Sample - Azure Storage Table - 1.0.0",
+      "description": "Azure Table storage is a service that stores non-relational structured data (also known as structured NoSQL data) in the cloud, providing a key/attribute store with a schemaless design. these connector helps you to create, update, delete, query on azure storage table",
+      "visible": true,
+      "image": null
+    }
+  ]
+}
