@@ -13,7 +13,7 @@
             {
               "uuid": "d3ebc2ae-df82-4628-b08b-767521131c5b",
               "@type": "WorkflowStep",
-              "name": "Alerts",
+              "name": "Start",
               "description": null,
               "status": null,
               "arguments": {
@@ -29,7 +29,8 @@
                   }
                 },
                 "noRecordExecution": true,
-                "singleRecordExecution": false
+                "singleRecordExecution": false,
+                "executeButtonText": "Execute"
               },
               "left": "20",
               "top": "20",
@@ -75,11 +76,16 @@
               "uuid": "fa3b216b-5b76-4ba6-9ee9-bbe6b2519477",
               "label": null,
               "isExecuted": false,
-              "name": "Alerts -> Create Table",
+              "name": "Start-> Create Table",
               "sourceStep": "/api/3/workflow_steps/d3ebc2ae-df82-4628-b08b-767521131c5b",
               "targetStep": "/api/3/workflow_steps/2f108cb7-97f9-4212-9ec3-303649c1aa08"
             }
-          ]
+          ],
+          "recordTags": [
+            "Azure",
+            "azure-storage-table"
+          ],
+          "debug": false
         },
         {
           "@type": "Workflow",
@@ -89,7 +95,7 @@
             {
               "uuid": "6ea4067f-1d98-4549-8249-273d7e333882",
               "@type": "WorkflowStep",
-              "name": "Alerts",
+              "name": "Start",
               "description": null,
               "status": null,
               "arguments": {
@@ -105,7 +111,8 @@
                   }
                 },
                 "noRecordExecution": true,
-                "singleRecordExecution": false
+                "singleRecordExecution": false,
+                "executeButtonText": "Execute"
               },
               "left": "20",
               "top": "20",
@@ -151,11 +158,16 @@
               "uuid": "0239776d-dfd3-4cdc-802f-492cc2d53adb",
               "label": null,
               "isExecuted": false,
-              "name": "Alerts -> Delete Table",
+              "name": "Start-> Delete Table",
               "sourceStep": "/api/3/workflow_steps/6ea4067f-1d98-4549-8249-273d7e333882",
               "targetStep": "/api/3/workflow_steps/283c99c6-3f23-4714-9cde-cbe90603596b"
             }
-          ]
+          ],
+          "recordTags": [
+            "Azure",
+            "azure-storage-table"
+          ],
+          "debug": false
         },
         {
           "@type": "Workflow",
@@ -165,7 +177,7 @@
             {
               "uuid": "59896bc9-8379-4015-848e-4d810f764e20",
               "@type": "WorkflowStep",
-              "name": "Alerts",
+              "name": "Start",
               "description": null,
               "status": null,
               "arguments": {
@@ -181,7 +193,8 @@
                   }
                 },
                 "noRecordExecution": true,
-                "singleRecordExecution": false
+                "singleRecordExecution": false,
+                "executeButtonText": "Execute"
               },
               "left": "20",
               "top": "20",
@@ -214,7 +227,7 @@
             }
           ],
           "triggerLimit": null,
-          "description": "The Query Tables operation returns a list of tables under the specified account.",
+          "description": "The Query Tables operation returns a list of tables under the specified storage account.",
           "name": "Query Table",
           "tag": "#Azure Storage Table",
           "isActive": false,
@@ -228,11 +241,16 @@
               "uuid": "c551a358-9bfe-4dee-b88a-9b0122cad445",
               "label": null,
               "isExecuted": false,
-              "name": "Alerts -> Query Table",
+              "name": "Start-> Query Table",
               "sourceStep": "/api/3/workflow_steps/59896bc9-8379-4015-848e-4d810f764e20",
               "targetStep": "/api/3/workflow_steps/d176ff01-db78-437a-ba7c-0783e81c63c5"
             }
-          ]
+          ],
+          "recordTags": [
+            "Azure",
+            "azure-storage-table"
+          ],
+          "debug": false
         },
         {
           "@type": "Workflow",
@@ -242,12 +260,12 @@
             {
               "uuid": "3cde031e-a95c-4146-8c33-8dad4fdf3de4",
               "@type": "WorkflowStep",
-              "name": "Alerts",
+              "name": "Start",
               "description": null,
               "status": null,
               "arguments": {
                 "route": "8c423cb8-de49-4e1b-9eee-0e55975b4d22",
-                "title": "Azure Storage Table: Insert Entity into Table",
+                "title": "Azure Storage Table: Insert Entity Into Table",
                 "resources": [
                   "alerts"
                 ],
@@ -258,7 +276,8 @@
                   }
                 },
                 "noRecordExecution": true,
-                "singleRecordExecution": false
+                "singleRecordExecution": false,
+                "executeButtonText": "Execute"
               },
               "left": "20",
               "top": "20",
@@ -267,7 +286,7 @@
             {
               "uuid": "e2d0263b-3622-4dda-8c5f-b25d5396f54b",
               "@type": "WorkflowStep",
-              "name": "Insert Entity into Table",
+              "name": "Insert Entity Into Table",
               "description": null,
               "status": null,
               "arguments": {
@@ -275,12 +294,14 @@
                 "config": "''",
                 "params": {
                   "table_name": "",
+                  "partition_key": "",
+                  "row_key": "",
                   "entity_fields": ""
                 },
                 "version": "1.0.0",
                 "connector": "azure-storage-table",
                 "operation": "insert_entity_table",
-                "operationTitle": "Insert Entity into Table",
+                "operationTitle": "Insert Entity Into Table",
                 "step_variables": {
                   "output_data": "{{vars.result}}"
                 }
@@ -292,7 +313,7 @@
           ],
           "triggerLimit": null,
           "description": "The Insert Entity operation inserts a new entity into a table.",
-          "name": "Insert Entity into Table",
+          "name": "Insert Entity Into Table",
           "tag": "#Azure Storage Table",
           "isActive": false,
           "singleRecordExecution": false,
@@ -305,11 +326,16 @@
               "uuid": "1afa6382-687b-4dd1-9480-a21e0e386594",
               "label": null,
               "isExecuted": false,
-              "name": "Alerts -> Insert Entity into Table",
+              "name": "Start-> Insert Entity Into Table",
               "sourceStep": "/api/3/workflow_steps/3cde031e-a95c-4146-8c33-8dad4fdf3de4",
               "targetStep": "/api/3/workflow_steps/e2d0263b-3622-4dda-8c5f-b25d5396f54b"
             }
-          ]
+          ],
+          "recordTags": [
+            "Azure",
+            "azure-storage-table"
+          ],
+          "debug": false
         },
         {
           "@type": "Workflow",
@@ -319,12 +345,12 @@
             {
               "uuid": "566ea8c3-0f67-43ec-afde-f4e31a7e4732",
               "@type": "WorkflowStep",
-              "name": "Alerts",
+              "name": "Start",
               "description": null,
               "status": null,
               "arguments": {
                 "route": "fb81a345-d57c-4ecd-b8ad-c4aa5f6676c7",
-                "title": "Azure Storage Table: Query Entity into Table",
+                "title": "Azure Storage Table: Query Entity Into Table",
                 "resources": [
                   "alerts"
                 ],
@@ -335,7 +361,8 @@
                   }
                 },
                 "noRecordExecution": true,
-                "singleRecordExecution": false
+                "singleRecordExecution": false,
+                "executeButtonText": "Execute"
               },
               "left": "20",
               "top": "20",
@@ -344,7 +371,7 @@
             {
               "uuid": "ef2c94c8-f2ad-4bd0-a440-9347ee3b0c24",
               "@type": "WorkflowStep",
-              "name": "Query Entity into Table",
+              "name": "Query Entity Into Table",
               "description": null,
               "status": null,
               "arguments": {
@@ -360,7 +387,7 @@
                 "version": "1.0.0",
                 "connector": "azure-storage-table",
                 "operation": "query_entity_table",
-                "operationTitle": "Query Entity into Table",
+                "operationTitle": "Query Entity Into Table",
                 "step_variables": {
                   "output_data": "{{vars.result}}"
                 }
@@ -371,8 +398,8 @@
             }
           ],
           "triggerLimit": null,
-          "description": "The Query Entities operation queries entities in a table.",
-          "name": "Query Entity into Table",
+          "description": "The Query Entities operation returns a list of entities under the specified table.",
+          "name": "Query Entity Into Table",
           "tag": "#Azure Storage Table",
           "isActive": false,
           "singleRecordExecution": false,
@@ -385,11 +412,16 @@
               "uuid": "588105a4-bf60-45a5-af91-828c47516758",
               "label": null,
               "isExecuted": false,
-              "name": "Alerts -> Query Entity into Table",
+              "name": "Start-> Query Entity Into Table",
               "sourceStep": "/api/3/workflow_steps/566ea8c3-0f67-43ec-afde-f4e31a7e4732",
               "targetStep": "/api/3/workflow_steps/ef2c94c8-f2ad-4bd0-a440-9347ee3b0c24"
             }
-          ]
+          ],
+          "recordTags": [
+            "Azure",
+            "azure-storage-table"
+          ],
+          "debug": false
         },
         {
           "@type": "Workflow",
@@ -399,12 +431,12 @@
             {
               "uuid": "ff813453-2fa6-4d2c-a098-95b88f27673b",
               "@type": "WorkflowStep",
-              "name": "Alerts",
+              "name": "Start",
               "description": null,
               "status": null,
               "arguments": {
                 "route": "11999890-26f9-4752-b7b2-36e3dd753cfd",
-                "title": "Azure Storage Table: Update Entity into Table",
+                "title": "Azure Storage Table: Update Entity Into Table",
                 "resources": [
                   "alerts"
                 ],
@@ -415,7 +447,8 @@
                   }
                 },
                 "noRecordExecution": true,
-                "singleRecordExecution": false
+                "singleRecordExecution": false,
+                "executeButtonText": "Execute"
               },
               "left": "20",
               "top": "20",
@@ -424,7 +457,7 @@
             {
               "uuid": "830d0c68-7d33-452e-bcb3-dad841b88e2d",
               "@type": "WorkflowStep",
-              "name": "Update Entity into Table",
+              "name": "Update Entity Into Table",
               "description": null,
               "status": null,
               "arguments": {
@@ -439,7 +472,7 @@
                 "version": "1.0.0",
                 "connector": "azure-storage-table",
                 "operation": "update_entity_table",
-                "operationTitle": "Update Entity into Table",
+                "operationTitle": "Update Entity Into Table",
                 "step_variables": {
                   "output_data": "{{vars.result}}"
                 }
@@ -450,8 +483,8 @@
             }
           ],
           "triggerLimit": null,
-          "description": "Update an existing entity in a table. The Update Entity command does not replace the existing entity.",
-          "name": "Update Entity into Table",
+          "description": "Update an existing entity in a table.",
+          "name": "Update Entity Into Table",
           "tag": "#Azure Storage Table",
           "isActive": false,
           "singleRecordExecution": false,
@@ -464,11 +497,16 @@
               "uuid": "fc33296c-7b79-43f2-877f-bba38f05e71a",
               "label": null,
               "isExecuted": false,
-              "name": "Alerts -> Update Entity into Table",
+              "name": "Start-> Update Entity Into Table",
               "sourceStep": "/api/3/workflow_steps/ff813453-2fa6-4d2c-a098-95b88f27673b",
               "targetStep": "/api/3/workflow_steps/830d0c68-7d33-452e-bcb3-dad841b88e2d"
             }
-          ]
+          ],
+          "recordTags": [
+            "Azure",
+            "azure-storage-table"
+          ],
+          "debug": false
         },
         {
           "@type": "Workflow",
@@ -478,12 +516,12 @@
             {
               "uuid": "bd2f6029-4f58-481d-927a-45698f211d53",
               "@type": "WorkflowStep",
-              "name": "Alerts",
+              "name": "Start",
               "description": null,
               "status": null,
               "arguments": {
                 "route": "fb3dc8c6-71d6-47f7-907d-f31e574da07d",
-                "title": "Azure Storage Table: Delete Entity into Table",
+                "title": "Azure Storage Table: Delete Entity Into Table",
                 "resources": [
                   "alerts"
                 ],
@@ -494,7 +532,8 @@
                   }
                 },
                 "noRecordExecution": true,
-                "singleRecordExecution": false
+                "singleRecordExecution": false,
+                "executeButtonText": "Execute"
               },
               "left": "20",
               "top": "20",
@@ -503,7 +542,7 @@
             {
               "uuid": "8ecc3f81-cda9-4256-a430-e49590e810c3",
               "@type": "WorkflowStep",
-              "name": "Delete Entity into Table",
+              "name": "Delete Entity Into Table",
               "description": null,
               "status": null,
               "arguments": {
@@ -517,7 +556,7 @@
                 "version": "1.0.0",
                 "connector": "azure-storage-table",
                 "operation": "delete_entity_table",
-                "operationTitle": "Delete Entity into Table",
+                "operationTitle": "Delete Entity Into Table",
                 "step_variables": {
                   "output_data": "{{vars.result}}"
                 }
@@ -529,7 +568,7 @@
           ],
           "triggerLimit": null,
           "description": "Delete an existing entity from a table.",
-          "name": "Delete Entity into Table",
+          "name": "Delete Entity Into Table",
           "tag": "#Azure Storage Table",
           "isActive": false,
           "singleRecordExecution": false,
@@ -542,17 +581,26 @@
               "uuid": "ed93a841-d469-4f06-a3e9-8ffe9d060969",
               "label": null,
               "isExecuted": false,
-              "name": "Alerts -> Delete Entity into Table",
+              "name": "Start-> Delete Entity Into Table",
               "sourceStep": "/api/3/workflow_steps/bd2f6029-4f58-481d-927a-45698f211d53",
               "targetStep": "/api/3/workflow_steps/8ecc3f81-cda9-4256-a430-e49590e810c3"
             }
-          ]
+          ],
+          "recordTags": [
+            "Azure",
+            "azure-storage-table"
+          ],
+          "debug": false
         }
       ],
       "name": "Sample - Azure Storage Table - 1.0.0",
-      "description": "Azure Table storage is a service that stores non-relational structured data (also known as structured NoSQL data) in the cloud, providing a key/attribute store with a schemaless design. these connector helps you to create, update, delete, query on azure storage table",
+      "description": "Azure Table storage is a service that stores non-relational structured data (also known as structured NoSQL data) in the cloud, providing a key/attribute store with a schemaless design. this connector helps you to create, update, delete, query on azure storage table.",
       "visible": true,
-      "image": null
+      "image": null,
+      "recordTags": [
+        "Azure",
+        "azure-storage-table"
+      ]
     }
   ]
 }

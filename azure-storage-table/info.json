@@ -2,7 +2,7 @@
   "name": "azure-storage-table",
   "label": "Azure Storage Table",
   "version": "1.0.0",
-  "description": "Azure Table storage is a service that stores non-relational structured data (also known as structured NoSQL data) in the cloud, providing a key/attribute store with a schemaless design. these connector helps you to create, update, delete, query on azure storage table",
+  "description": "Azure Table storage is a service that stores non-relational structured data (also known as structured NoSQL data) in the cloud, providing a key/attribute store with a schemaless design. this connector helps you to create, update, delete, query on azure storage table.",
   "publisher": "Fortinet",
   "cs_approved": true,
   "cs_compatible": true,
@@ -59,6 +59,7 @@
           "visible": true,
           "type": "text",
           "name": "table_name",
+          "tooltip": "Table name to create new table.",
           "description": "Table name to create new table."
         }
       ],
@@ -81,6 +82,7 @@
           "visible": true,
           "type": "text",
           "name": "table_name",
+          "tooltip": "Table name to insert entity into the table.",
           "description": "Table name to insert entity into the table."
         },
         {
@@ -90,6 +92,7 @@
           "visible": true,
           "type": "text",
           "name": "partition_key",
+          "tooltip": "Unique identifier for the partition within a given table.",
           "description": "Unique identifier for the partition within a given table."
         },
         {
@@ -99,6 +102,7 @@
           "visible": true,
           "type": "text",
           "name": "row_key",
+          "tooltip": "Unique identifier for an entity within a given partition.",
           "description": "Unique identifier for an entity within a given partition."
         },
         {
@@ -108,6 +112,8 @@
           "visible": true,
           "type": "json",
           "name": "entity_fields",
+          "placeholder": "e.g. { \"Key1\": Value1, \"Key2\": Value2}",
+          "tooltip": "Entity fields to add into table in key value pair(JSON format).",
           "description": "Entity fields in JSON format: { \"Key1\": Value1, \"Key2\": Value2}."
         }
       ],
@@ -120,7 +126,7 @@
     },
     {
       "title": "Query Table",
-      "description": "The Query Tables operation returns a list of tables under the specified account.",
+      "description": "The Query Tables operation returns a list of tables under the specified storage account.",
       "operation": "query_table",
       "category": "investigation",
       "annotation": "query_table",
@@ -132,6 +138,8 @@
           "visible": true,
           "type": "text",
           "name": "query_filter",
+          "placeholder": "e.g. Key eq 'Value'",
+          "tooltip": "Specify the filter query based on which you want to retrieve tables from Azure Storage Table.",
           "description": "Specify the filter query based on which you want to retrieve tables from Azure Storage Table."
         },
         {
@@ -141,6 +149,7 @@
           "visible": true,
           "type": "text",
           "name": "records_limit",
+          "tooltip": "Specify the maximum number of tables that this operation should return from Azure Storage Table.",
           "description": "Specify the maximum number of tables that this operation should return from Azure Storage Table."
         }
       ],
@@ -155,7 +164,7 @@
     },
     {
       "title": "Query Entity Into Table",
-      "description": "The Query Entities operation queries entities in a table.",
+      "description": "The Query Entities operation returns a list of entities under the specified table.",
       "operation": "query_entity_table",
       "category": "investigation",
       "annotation": "query_entity_table",
@@ -167,6 +176,7 @@
           "visible": true,
           "type": "text",
           "name": "table_name",
+          "tooltip": "Table name to query on entity.",
           "description": "Table name to query on entity."
         },
         {
@@ -176,6 +186,7 @@
           "visible": true,
           "type": "text",
           "name": "partition_key",
+          "tooltip": "Unique identifier for the partition within a given table.",
           "description": "Unique identifier for the partition within a given table."
         },
         {
@@ -185,6 +196,7 @@
           "visible": true,
           "type": "text",
           "name": "row_key",
+          "tooltip": "Unique identifier for an entity within a given partition.",
           "description": "Unique identifier for an entity within a given partition."
         },
         {
@@ -194,6 +206,8 @@
           "visible": true,
           "type": "text",
           "name": "query_filter",
+          "tooltip": "Specify the filter query based on which you want to retrieve entities from Azure Storage Table.",
+          "placeholder": "e.g. Key eq 'Value'",
           "description": "Specify the filter query based on which you want to retrieve entities from Azure Storage Table.\nInformation about Query expression structure can be found here: https://docs.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#constructing-filter-strings."
         },
         {
@@ -203,6 +217,7 @@
           "visible": true,
           "type": "text",
           "name": "property_names",
+          "tooltip": "Provide comma separated property names",
           "description": "Provide comma separated property names"
         }
       ],
@@ -229,7 +244,7 @@
     },
     {
       "title": "Update Entity Into Table",
-      "description": "Update an existing entity in a table. The Update Entity command does not replace the existing entity.",
+      "description": "Update an existing entity in a table.",
       "operation": "update_entity_table",
       "category": "investigation",
       "annotation": "update_entity_table",
@@ -241,6 +256,7 @@
           "visible": true,
           "type": "text",
           "name": "table_name",
+          "tooltip": "Table name to update on entity.",
           "description": "Table name to update on entity."
         },
         {
@@ -250,6 +266,7 @@
           "visible": true,
           "type": "text",
           "name": "partition_key",
+          "tooltip": "Unique identifier for the partition within a given table.",
           "description": "Unique identifier for the partition within a given table."
         },
         {
@@ -259,6 +276,7 @@
           "visible": true,
           "type": "text",
           "name": "row_key",
+          "tooltip": "Unique identifier for an entity within a given partition.",
           "description": "Unique identifier for an entity within a given partition."
         },
         {
@@ -268,6 +286,8 @@
           "visible": true,
           "type": "json",
           "name": "entity_fields",
+          "placeholder": "e.g. { \"Key1\": Value1, \"Key2\": Value2}",
+          "tooltip": "Entity fields to update the entity in key value pair(JSON format).",
           "description": "Entity fields in JSON format: { \"Key1\": Value1, \"Key2\": Value2}."
         }
       ],
@@ -290,6 +310,7 @@
           "visible": true,
           "type": "text",
           "name": "table_name",
+          "tooltip": "Table name to delete a entity.",
           "description": "Table name to delete a entity."
         },
         {
@@ -299,6 +320,7 @@
           "visible": true,
           "type": "text",
           "name": "partition_key",
+          "tooltip": "Unique identifier for the partition within a given table.",
           "description": "Unique identifier for the partition within a given table."
         },
         {
@@ -308,6 +330,7 @@
           "visible": true,
           "type": "text",
           "name": "row_key",
+          "tooltip": "Unique identifier for an entity within a given partition.",
           "description": "Unique identifier for an entity within a given partition."
         }
       ],
@@ -330,6 +353,7 @@
           "visible": true,
           "type": "text",
           "name": "table_name",
+          "tooltip": "Table name to delete table.",
           "description": "Table name to delete table."
         }
       ],
