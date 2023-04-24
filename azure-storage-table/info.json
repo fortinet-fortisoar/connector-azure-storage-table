@@ -341,7 +341,7 @@
     },
     {
       "title": "Delete Table",
-      "description": "The Delete Table operation deletes a table in a storage account.",
+      "description": "The Delete Table operation deletes a table from a storage account.",
       "operation": "delete_table",
       "category": "investigation",
       "annotation": "delete_table",
@@ -353,8 +353,8 @@
           "visible": true,
           "type": "text",
           "name": "table_name",
-          "tooltip": "Table name to delete table.",
-          "description": "Table name to delete table."
+          "tooltip": "Table name to delete table from a storage account.",
+          "description": "Table name to delete table from a storage account."
         }
       ],
       "output_schema": {
