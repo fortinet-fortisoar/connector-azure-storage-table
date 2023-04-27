@@ -9,7 +9,7 @@
   "category": "IT Services",
   "icon_small_name": "small.png",
   "icon_large_name": "large.png",
-  "help_online": "",
+  "help_online": "https://docs.fortinet.com/document/fortisoar/1.0.0/azure-storage-table/572/azure-storage-table-v1-0-0",
   "ingestion_supported": false,
   "configuration": {
     "fields": [
@@ -26,8 +26,8 @@
         "title": "Account SAS Token",
         "name": "sas_token",
         "type": "password",
-        "description": "Account Shared Access Signature to perform automated operations on Storage Table Service.",
-        "tooltip": "Account Shared Access Signature to perform automated operations on Storage Table Service.",
+        "description": "Account Shared Access Signature(SAS) to perform automated operations on Storage Table Service. To get an SAS, refer to section.",
+        "tooltip": "Account Shared Access Signature(SAS) to perform automated operations on Storage Table Service.",
         "required": true,
         "editable": true,
         "visible": true
@@ -40,14 +40,14 @@
         "type": "checkbox",
         "name": "verify_ssl",
         "value": true,
-        "description": "Specifies whether the SSL certificate for the server is to be verified or not. By default, this option is set as True."
+        "description": "Specifies whether the SSL certificate for the server is to be verified or not.\nBy default, this option is set to True."
       }
     ]
   },
   "operations": [
     {
       "title": "Create Table",
-      "description": "The Create Table operation creates a new table in a storage account.",
+      "description": "Creates a new table in a storage account based on the table name that you have specified.",
       "operation": "create_table",
       "category": "investigation",
       "annotation": "create_table",
@@ -59,8 +59,8 @@
           "visible": true,
           "type": "text",
           "name": "table_name",
-          "tooltip": "Table name to create new table.",
-          "description": "Table name to create new table."
+          "tooltip": "Specify the name of the table to create.",
+          "description": "Specify the name of the table to create."
         }
       ],
       "output_schema": {
@@ -70,7 +70,7 @@
     },
     {
       "title": "Insert Entity Into Table",
-      "description": "The Insert Entity operation inserts a new entity into a table.",
+      "description": "Inserts a new entity into a table based on the table name, partition key, and other input parameters that you have specified.",
       "operation": "insert_entity_table",
       "category": "investigation",
       "annotation": "insert_entity_table",
@@ -82,8 +82,8 @@
           "visible": true,
           "type": "text",
           "name": "table_name",
-          "tooltip": "Table name to insert entity into the table.",
-          "description": "Table name to insert entity into the table."
+          "tooltip": "Specify the name of the table in which to insert the entity.",
+          "description": "Specify the name of the table in which to insert the entity."
         },
         {
           "title": "Partition Key",
@@ -92,8 +92,8 @@
           "visible": true,
           "type": "text",
           "name": "partition_key",
-          "tooltip": "Unique identifier for the partition within a given table.",
-          "description": "Unique identifier for the partition within a given table."
+          "tooltip": "Specify the unique identifier for the partition within specified table.",
+          "description": "Specify the unique identifier for the partition within specified table."
         },
         {
           "title": "Row Key",
@@ -102,8 +102,8 @@
           "visible": true,
           "type": "text",
           "name": "row_key",
-          "tooltip": "Unique identifier for an entity within a given partition.",
-          "description": "Unique identifier for an entity within a given partition."
+          "tooltip": "Specify the unique identifier for an entity within specified partition.",
+          "description": "Specify the unique identifier for an entity within specified partition."
         },
         {
           "title": "Entity Fields ",
@@ -126,7 +126,7 @@
     },
     {
       "title": "Query Table",
-      "description": "The Query Tables operation returns a list of tables under the specified storage account.",
+      "description": "Returns a list of tables under the specified storage account based on the filter criteria and count of records that you have specified.",
       "operation": "query_table",
       "category": "investigation",
       "annotation": "query_table",
@@ -164,7 +164,7 @@
     },
     {
       "title": "Query Entity Into Table",
-      "description": "The Query Entities operation returns a list of entities under the specified table.",
+      "description": "Returns a list of entities under a table based on the table name, partition key, and other input parameters that you have specified.",
       "operation": "query_entity_table",
       "category": "investigation",
       "annotation": "query_entity_table",
@@ -176,8 +176,8 @@
           "visible": true,
           "type": "text",
           "name": "table_name",
-          "tooltip": "Table name to query on entity.",
-          "description": "Table name to query on entity."
+          "tooltip": "Specify the table name to query on entity.",
+          "description": "Specify the table name to query on entity."
         },
         {
           "title": "Partition Key",
@@ -186,8 +186,8 @@
           "visible": true,
           "type": "text",
           "name": "partition_key",
-          "tooltip": "Unique identifier for the partition within a given table.",
-          "description": "Unique identifier for the partition within a given table."
+          "tooltip": "Specify the unique identifier for the partition within a given table.",
+          "description": "Specify the unique identifier for the partition within a given table."
         },
         {
           "title": "Row Key",
@@ -196,8 +196,8 @@
           "visible": true,
           "type": "text",
           "name": "row_key",
-          "tooltip": "Unique identifier for an entity within a given partition.",
-          "description": "Unique identifier for an entity within a given partition."
+          "tooltip": "Specify the unique identifier for an entity within a given partition.",
+          "description": "Specify the unique identifier for an entity within a given partition."
         },
         {
           "title": "Query Filter",
@@ -206,9 +206,9 @@
           "visible": true,
           "type": "text",
           "name": "query_filter",
-          "tooltip": "Specify the filter query based on which you want to retrieve entities from Azure Storage Table.",
+          "tooltip": "Specify the filter query based on which you want to retrieve entities from Azure Storage Table. Information about Query expression structure can be found here: https://docs.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#constructing-filter-strings.",
           "placeholder": "e.g. Key eq 'Value'",
-          "description": "Specify the filter query based on which you want to retrieve entities from Azure Storage Table.\nInformation about Query expression structure can be found here: https://docs.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#constructing-filter-strings."
+          "description": "Specify the filter query based on which you want to retrieve entities from Azure Storage Table. Information about Query expression structure can be found here: https://docs.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#constructing-filter-strings."
         },
         {
           "title": "Property Names",
@@ -217,8 +217,8 @@
           "visible": true,
           "type": "text",
           "name": "property_names",
-          "tooltip": "Provide comma separated property names",
-          "description": "Provide comma separated property names"
+          "tooltip": "Specify the comma-separated property names of the entities.",
+          "description": "Specify the comma-separated property names of the entities."
         }
       ],
       "output_schema": {
@@ -244,7 +244,7 @@
     },
     {
       "title": "Update Entity Into Table",
-      "description": "Update an existing entity in a table.",
+      "description": "Updates an existing entity in a table based on the table name, partition key, and other input parameters that you have specified.",
       "operation": "update_entity_table",
       "category": "investigation",
       "annotation": "update_entity_table",
@@ -256,8 +256,8 @@
           "visible": true,
           "type": "text",
           "name": "table_name",
-          "tooltip": "Table name to update on entity.",
-          "description": "Table name to update on entity."
+          "tooltip": "Specify the table name where the entity is to be updated.",
+          "description": "Specify the table name where the entity is to be updated."
         },
         {
           "title": "Partition Key",
@@ -266,8 +266,8 @@
           "visible": true,
           "type": "text",
           "name": "partition_key",
-          "tooltip": "Unique identifier for the partition within a given table.",
-          "description": "Unique identifier for the partition within a given table."
+          "tooltip": "Specify the unique identifier for the partition within a given table.",
+          "description": "Specify the unique identifier for the partition within a given table."
         },
         {
           "title": "Row Key",
@@ -276,8 +276,8 @@
           "visible": true,
           "type": "text",
           "name": "row_key",
-          "tooltip": "Unique identifier for an entity within a given partition.",
-          "description": "Unique identifier for an entity within a given partition."
+          "tooltip": "Specify the unique identifier for an entity within a given partition.",
+          "description": "Specify the unique identifier for an entity within a given partition."
         },
         {
           "title": "Entity Fields ",
@@ -298,7 +298,7 @@
     },
     {
       "title": "Delete Entity Into Table",
-      "description": "Delete an existing entity from a table.",
+      "description": "Deletes an existing entity from a table based on the table name, partition key, and other input parameters that you have specified.",
       "operation": "delete_entity_table",
       "category": "investigation",
       "annotation": "delete_entity_table",
@@ -310,8 +310,8 @@
           "visible": true,
           "type": "text",
           "name": "table_name",
-          "tooltip": "Table name to delete a entity.",
-          "description": "Table name to delete a entity."
+          "tooltip": "Specify the table name from where to delete an entity.",
+          "description": "Specify the table name from where to delete an entity."
         },
         {
           "title": "Partition Key",
@@ -320,8 +320,8 @@
           "visible": true,
           "type": "text",
           "name": "partition_key",
-          "tooltip": "Unique identifier for the partition within a given table.",
-          "description": "Unique identifier for the partition within a given table."
+          "tooltip": "Specify the unique identifier for the partition within a given table.",
+          "description": "Specify the unique identifier for the partition within a given table."
         },
         {
           "title": "Row Key",
@@ -330,8 +330,8 @@
           "visible": true,
           "type": "text",
           "name": "row_key",
-          "tooltip": "Unique identifier for an entity within a given partition.",
-          "description": "Unique identifier for an entity within a given partition."
+          "tooltip": "Specify the unique identifier for an entity within a given partition.",
+          "description": "Specify the unique identifier for an entity within a given partition."
         }
       ],
       "output_schema": {
@@ -341,7 +341,7 @@
     },
     {
       "title": "Delete Table",
-      "description": "The Delete Table operation deletes a table from a storage account.",
+      "description": "Deletes a table from a storage account based on the table name that you have specified.",
       "operation": "delete_table",
       "category": "investigation",
       "annotation": "delete_table",
@@ -353,8 +353,8 @@
           "visible": true,
           "type": "text",
           "name": "table_name",
-          "tooltip": "Table name to delete table from a storage account.",
-          "description": "Table name to delete table from a storage account."
+          "tooltip": "Specify the table name to delete from a storage account.",
+          "description": "Specify the table name to delete from a storage account."
         }
       ],
       "output_schema": {
@@ -364,4 +364,3 @@
     }
   ]
 }
-
